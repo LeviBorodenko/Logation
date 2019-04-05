@@ -1,0 +1,22 @@
+body {
+	margin: 0;
+}
+
+div.container {
+	height: 100vh;
+	width: 100vw;
+	background-color: #505050;
+	margin: 0;
+	overflow: hidden;
+}
+
+.segment {
+	fill: #9B9B9B;
+	stroke: darkgray;
+	stroke-width: 1px;
+	opacity: 0.9;
+}
+
+.graticule {
+	opacity: 0.2;
+}

@@ -11,7 +11,8 @@ class Log(object):
     """
 
     def __init__(self, access_log_file="access.log",
-                 clean_dir="./cleanData/", raw_dir="./rawData/", asset_dir="./map/assets/"):
+                 clean_dir="./cleanData/", raw_dir="./rawData/",
+                 asset_dir="./map/assets/"):
         super(Log, self).__init__()
 
         # creating all file and directory names
@@ -19,8 +20,8 @@ class Log(object):
         self.raw_dir = raw_dir
         self.asset_dir = asset_dir
         self.data_file = raw_dir + access_log_file
-        self.data = self.clean_dir + "data.json"
-        self.responseJson = self.clean_dir + "response.json"
+        self.data = self.clean_dir + "analysis.json"
+        self.responseJson = self.clean_dir + "locations.json"
         self.locationsJS = self.asset_dir + "locations.js"
 
         # object that gathers miscellaneous information
@@ -38,7 +39,7 @@ class Log(object):
         return line.split(" ")[0]
 
     def removeDublicates(self):
-        """Scans the log file and removes doublicate ips"""
+        """Scans the log file for visits by the same ip and removes them."""
         with open(self.data_file, "r") as f:
 
             # storing all already added IPs
@@ -76,7 +77,7 @@ class Log(object):
                     return(line)
 
     def getContext(self, line):
-        """Helper"""
+        """Method to isolate OS data from a log line"""
         return(line.rsplit("\"")[5])
 
     def getOS(self, line):
@@ -238,11 +239,15 @@ class Log(object):
                            "raster": raster}, json_dump)
 
     def createJs(self):
+        """creating the js-file that we feed to the website inside the
+        ./map/ folder to create the map."""
         with open(self.responseJson, "r") as response:
+
             dataString = "const LOCATIONS = " + str(json.load(response))
             with open(self.locationsJS, "w") as f:
                 f.write(dataString)
 
 
-test = Log()
-test.analyseLog()
+if __name__ == '__main__':
+    log = Log()
+    log.analyseLog()

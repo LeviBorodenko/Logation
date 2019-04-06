@@ -16,12 +16,29 @@ class Log(object):
         super(Log, self).__init__()
 
         # creating all file and directory names
+
+        # dir with data that we can read & write
         self.clean_dir = clean_dir
+
+        # dir for source data. Read only!
         self.raw_dir = raw_dir
+
+        # "location.js" in this dir will be loaded by the website
+        # in ./map/
         self.asset_dir = asset_dir
+
+        # path to acces.log
         self.data_file = raw_dir + access_log_file
+
+        # this json will contain the geolocation and OS info for
+        # each IP
         self.data = self.clean_dir + "analysis.json"
+
+        # contains general information and rasterised location data
         self.responseJson = self.clean_dir + "locations.json"
+
+        # js file that loads the information and raster from
+        # locations.json intot the website.
         self.locationsJS = self.asset_dir + "locations.js"
 
         # object that gathers miscellaneous information

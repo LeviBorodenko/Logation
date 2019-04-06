@@ -244,6 +244,7 @@ class Log(object):
         with open(self.responseJson, "r") as response:
 
             dataString = "const LOCATIONS = " + str(json.load(response))
+
             with open(self.locationsJS, "w") as f:
                 f.write(dataString)
 

@@ -182,9 +182,7 @@ class App {
         this.addEvents()
     }
 }
-
-
-// debug 
+ 
 
 let container = document.querySelector("div.container")
 

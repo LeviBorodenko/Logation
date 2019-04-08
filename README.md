@@ -7,7 +7,7 @@ ____
 
 ## How to use
 
-First of all, make sure you have python3.x and *geolite2* installed. The later can be installed via pip with `pip install python-geoip-geolite2`.
+First of all, make sure you have python3.x and *geolite2* installed. The later can be installed via pip with `pip install maxminddb-geolite2 python-geoip-geolite2`.
 
 Then simply clone this repository, put a *copy* of your NGINX access.log in the 
 `./rawData/` folder and run Logation.py.
